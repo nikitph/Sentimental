@@ -9,7 +9,7 @@ function getImage(mag, score) {
     return 'Artboard@2x.png';
 }
 
-function getMessage(mag, score) {
+function getMessage(mag, score, sente) {
     var message = '';
     if (score < -0.6) {
         message = 'The overall sentiment from the text is strongly negative';
@@ -34,11 +34,12 @@ function getMessage(mag, score) {
     }
 
     else if (score >= 0.6) {
-        message = 'The overall sentiment from the text is positive';
+
+        message = 'The overall sentiment from the text is very positive';
 
     }
 
-    return mag + ' ' + score + ' ' + message;
+    return mag + ' ' + score + ' There are ' + sente + ' sentences in your selection.' + message;
 }
 
 function getClickHandler() {
@@ -65,11 +66,13 @@ function getClickHandler() {
 
             var mag = j.documentSentiment.magnitude;
             var score = j.documentSentiment.score;
+            var sente = j.sentences.length;
+
             chrome.notifications.create("test", {
                 iconUrl: chrome.runtime.getURL(getImage(mag, score)),
                 title: 'Text Analysis Result',
                 type: 'basic',
-                message: getMessage(mag, score),
+                message: getMessage(mag, score, sente),
                 buttons: [{title: 'Learn More'}],
                 isClickable: true,
                 priority: 2,
