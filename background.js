@@ -12,7 +12,7 @@ function getImage(mag, score) {
 function getMessage(mag, score, sente) {
     var message = '';
     if (score < -0.6) {
-        message = 'The overall sentiment from the text is strongly negative';
+        message = 'The overall sentiment from the text is strongly negative. Please consider a revision before sending it to anyone.';
     }
     else if (score < -0.3 && score >= -0.6) {
         message = 'The overall sentiment from the text is somewhat negative';
@@ -23,6 +23,7 @@ function getMessage(mag, score, sente) {
             message = 'The overall sentiment from all of the text is neutral but there are sentences with high emotional content';
         }
         else {
+
             message = 'The overall sentiment from all of the text is neutral, individual sentences are low in emotional content';
 
         }
