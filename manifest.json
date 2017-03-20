@@ -1,7 +1,7 @@
 {
   "name" : "Sentimental",
   "version" : "1.0.1",
-  "description" : "Get image info for images, including EXIF data",
+  "description" : "Analyze sentiment of any selected text",
   "background" : { "scripts": ["background.js"] },
   "permissions" : [
     "contextMenus",

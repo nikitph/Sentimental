@@ -10,7 +10,42 @@ return 'Artboard@2x.png';
 }
 
 function getMessage(mag, score){
-return mag + ' ' + score;
+    var message = '';
+    if ( score < -0.6)
+    {
+        message = 'The overall sentiment from the text is strongly negative';
+    }
+    else if (score < -0.3 && score >= -0.6)
+    {
+        message = 'The overall sentiment from the text is somewhat negative';
+
+    }
+    else if (score < 0.3 && score >= -0.3)
+    {
+        if(mag >=3)
+        {
+            message = 'The overall sentiment from all of the text is neutral but there are sentences with high emotional content';
+        }
+        else
+        {
+            message = 'The overall sentiment from all of the text is neutral, individual sentences are low in emotional content';
+
+        }
+
+    }
+    else if (score < 0.6 && score >= 0.3)
+    {
+        message = 'The overall sentiment from the text is positive';
+
+    }
+
+    else if (score >= 0.6)
+    {
+        message = 'The overall sentiment from the text is positive';
+
+    }
+
+    return mag + ' ' + score + ' ' + message;
 }
 
 function getClickHandler() {
@@ -37,7 +72,7 @@ var mag = j.documentSentiment.magnitude;
 var score = j.documentSentiment.score;
     chrome.notifications.create("test", {
       iconUrl: chrome.runtime.getURL(getImage(mag, score)),
-      title: 'Removal required',
+      title: 'Text Analysis Result',
       type: 'basic',
       message: getMessage(mag,score),
       buttons: [{ title: 'Learn More' }],
