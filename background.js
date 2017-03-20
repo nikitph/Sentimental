@@ -6,7 +6,7 @@
  * Returns a handler which will open a new window when activated.
  */
 function getImage(mag, score){
-return 'imageinfo-48.png';
+return 'Artboard@2x.png';
 }
 
 function getMessage(mag, score){
@@ -67,7 +67,7 @@ var score = j.documentSentiment.score;
  * Create a context menu which will only show up for images.
  */
 chrome.contextMenus.create({
-  "title" : "Get image info",
+  "title" : "Analyze Text Sentiment",
   "type" : "normal",
   "contexts" : ["selection"],
   "onclick" : getClickHandler()

@@ -1,5 +1,5 @@
 {
-  "name" : "Imageinfo",
+  "name" : "Sentimental",
   "version" : "1.0.1",
   "description" : "Get image info for images, including EXIF data",
   "background" : { "scripts": ["background.js"] },
@@ -12,13 +12,16 @@
    ],
   "minimum_chrome_version" : "6.0.0.0",
   "icons" : {
-    "16" : "imageinfo-16.png",
-    "48" : "imageinfo-48.png",
-    "128" : "imageinfo-128.png"
+    "16" : "Artboard.png",
+    "48" : "Artboard@2x.png",
+    "128" : "Artboard@3x.png"
+  },
+  "browser_action": {
+    "default_icon": "Artboard.png"
   },
   
    "web_accessible_resources": [
-    "imageinfo-48.png"
+    "Artboard@2x.png"
   ],
   "manifest_version": 2
 }
