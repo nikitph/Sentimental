@@ -10,6 +10,7 @@ function getImage(mag, score) {
 }
 
 function getMessage(mag, score, sente) {
+
     var message = '';
     if (score < -0.6) {
         message = 'The overall sentiment from the text is strongly negative. Please consider a revision before sending it to anyone.';
@@ -40,7 +41,7 @@ function getMessage(mag, score, sente) {
 
     }
 
-    return mag + ' ' + score + ' There are ' + sente + ' sentences in your selection.' + message;
+    return 'There are ' + sente + ' sentences in your selection.' + message;
 }
 
 function getClickHandler() {
@@ -71,11 +72,9 @@ function getClickHandler() {
 
             chrome.notifications.create("test", {
                 iconUrl: chrome.runtime.getURL(getImage(mag, score)),
-                title: 'Text Analysis Result',
+                title: 'Sentimental : Text Analysis Result',
                 type: 'basic',
                 message: getMessage(mag, score, sente),
-                buttons: [{title: 'Learn More'}],
-                isClickable: true,
                 priority: 2,
             }, function () {
             });
